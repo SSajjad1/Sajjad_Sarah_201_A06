@@ -227,7 +227,12 @@ max_temps <- read_tsv("state_max_temps.tsv") |>
 Calculate the average temperature for each month across the whole data frame (using the data for all three states together).
 
 ```{r}
+max_temps <- variable.name = "month"
+max_temps <- value.name = "temp"
 
+avg_temp <- max_temps %>%
+  group_by(month)
+  summarise(avg_temp = mean(temp))
 ```
 
 
@@ -242,6 +247,12 @@ Create three new data frames by slicing the data by state.
 No need to print any output here.
 
 ```{r}
+
+co_data <- max_temps[1:126, ]
+
+oh_data <- max_temps[127:252, ]
+
+va_data <- max_temps[253:378, ]
 
 ```
 
@@ -276,6 +287,19 @@ Example: The number 312 would return 6 (3 + 1 + 2)
 Run your function with 935068.
 
 ```{r}
+# recursion function
+digits_sum <- function(n){
+if (n == 0){ # base case
+  return(0)
+  } else {
+  last_digit <- n %% 10  # takes remainder
+  trunc_num <- n %/% 10  #ignores remainder
+  return(last_digit + digits_sum(trunc_num))
+  }
+}
 
+# run function
+run_func <- digits_sum(935068)
+run_func
 ```
 
