@@ -227,12 +227,9 @@ max_temps <- read_tsv("state_max_temps.tsv") |>
 Calculate the average temperature for each month across the whole data frame (using the data for all three states together).
 
 ```{r}
-max_temps <- variable.name = "month"
-max_temps <- value.name = "temp"
-
-avg_temp <- max_temps %>%
-  group_by(month)
-  summarise(avg_temp = mean(temp))
+# column means, for columns 3 to 14 (each month)
+avg_temp <- colMeans(max_temps[ ,3:14])
+avg_temp
 ```
 
 
@@ -274,7 +271,13 @@ Example (this is NOT the answer just an example of what goes in the {}):
 Note: This code should still run successfully even if the numbers were to change.
 
 ```{r}
+med_temp <- sapply(co_data, median, na.rm = TRUE)
+med_temp
 
+which.max(med_temp)
+which.min(med_temp)
+
+paste0("The maximum median annual temperature of ", max(med_temp), " occurred in ", which.max(med_temp)," and the minimum median annual temperature of ", min(med_temp), " occurred in ", which.min(med_temp), ".")
 ```
 
 

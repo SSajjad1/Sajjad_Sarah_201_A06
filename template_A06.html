@@ -3404,12 +3404,12 @@ $SO
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>mat_rand <span class="co"># can delete after</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4] [,5]
-[1,] 1646   37  927  408   25
-[2,]   57  875  916 1345  727
-[3,]   86 1985   42 1833  140
-[4,] 1175  321   52   38  791
-[5,]   88   72 1034  423 1897
-[6,] 1812 1324  864   82 1986</code></pre>
+[1,]  200  206  659  753   98
+[2,] 1262  106 1226   67 1949
+[3,] 1207 1004   90 1841   83
+[4,]  468   27   20 1704   63
+[5,]  368 1038   51  361 1692
+[6,]   48 1075  680  982   71</code></pre>
 </div>
 </div>
 <p>Use an appropriate apply function to round values with 2 digits to the nearest tens, values with 3 digits to the nearest hundreds, and 4 digits to the nearest thousands.</p>
@@ -3434,12 +3434,12 @@ $SO
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>mat_rounded</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4] [,5]
-[1,] 2000   40  900  400   20
-[2,]   60  900  900 1000  700
-[3,]   90 2000   40 2000  100
-[4,] 1000  300   50   40  800
-[5,]   90   70 1000  400 2000
-[6,] 2000 1000  900   80 2000</code></pre>
+[1,]  200  200  700  800  100
+[2,] 1000  100 1000   70 2000
+[3,] 1000 1000   90 2000   80
+[4,]  500   30   20 2000   60
+[5,]  400 1000   50  400 2000
+[6,]   50 1000  700 1000   70</code></pre>
 </div>
 </div>
 </section>
@@ -3459,6 +3459,17 @@ $SO
 <section id="part-a-2-points" class="level3">
 <h3 class="anchored" data-anchor-id="part-a-2-points">Part a (2 points)</h3>
 <p>Calculate the average temperature for each month across the whole data frame (using the data for all three states together).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># column means, for columns 3 to 14 (each month)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>avg_temp <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(max_temps[ ,<span class="dv">3</span><span class="sc">:</span><span class="dv">14</span>])</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>avg_temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     jan      feb      mar      apr      may      jun      jul      aug 
+38.89206 41.93598 50.73148 61.35608 71.26111 79.95503 84.17460 82.23571 
+     sep      oct      nov      dec 
+75.92857 64.56296 51.49921 41.11508 </code></pre>
+</div>
+</div>
 </section>
 <section id="part-b-2-points" class="level3">
 <h3 class="anchored" data-anchor-id="part-b-2-points">Part b (2 points)</h3>
@@ -3469,6 +3480,13 @@ $SO
 <li>Slice the data frame to only include the state of Virginia (VA).</li>
 </ul>
 <p>No need to print any output here.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>co_data <span class="ot">&lt;-</span> max_temps[<span class="dv">1</span><span class="sc">:</span><span class="dv">126</span>, ]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>oh_data <span class="ot">&lt;-</span> max_temps[<span class="dv">127</span><span class="sc">:</span><span class="dv">252</span>, ]</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>va_data <span class="ot">&lt;-</span> max_temps[<span class="dv">253</span><span class="sc">:</span><span class="dv">378</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="part-c-5-points" class="level3">
 <h3 class="anchored" data-anchor-id="part-c-5-points">Part c (5 points)</h3>
@@ -3479,6 +3497,30 @@ $SO
 <p>Example (this is NOT the answer just an example of what goes in the {}):</p>
 <p>“The maximum median annual temperature of 68.25 occurred in 2017 and the minimum median annual temperature of 57.15 occurred in 1907.”</p>
 <p>Note: This code should still run successfully even if the numbers were to change.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>med_temp <span class="ot">&lt;-</span> <span class="fu">sapply</span>(co_data, median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>med_temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state    year     jan     feb     mar     apr     may     jun     jul     aug 
+     NA 1957.50   37.40   40.40   47.15   56.80   66.10   76.85   82.20   80.00 
+    sep     oct     nov     dec 
+  72.40   61.25   47.35   38.20 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(med_temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>year 
+   2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(med_temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>jan 
+  3 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;The maximum median annual temperature of &quot;</span>, <span class="fu">max</span>(med_temp), <span class="st">&quot; occurred in &quot;</span>, <span class="fu">which.max</span>(med_temp),<span class="st">&quot; and the minimum median annual temperature of &quot;</span>, <span class="fu">min</span>(med_temp), <span class="st">&quot; occurred in &quot;</span>, <span class="fu">which.min</span>(med_temp), <span class="st">&quot;.&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;The maximum median annual temperature of NA occurred in 2 and the minimum median annual temperature of NA occurred in 3.&quot;</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="question-5-5-points" class="level2">
@@ -3486,6 +3528,25 @@ $SO
 <p>Write a recursive function that calculates the sum of the digits in a number.</p>
 <p>Example: The number 312 would return 6 (3 + 1 + 2)</p>
 <p>Run your function with 935068.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recursion function</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>digits_sum <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n <span class="sc">==</span> <span class="dv">0</span>){ <span class="co"># base case</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="dv">0</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  last_digit <span class="ot">&lt;-</span> n <span class="sc">%%</span> <span class="dv">10</span>  <span class="co"># takes remainder</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  trunc_num <span class="ot">&lt;-</span> n <span class="sc">%/%</span> <span class="dv">10</span>  <span class="co">#ignores remainder</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(last_digit <span class="sc">+</span> <span class="fu">digits_sum</span>(trunc_num))</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co"># run function</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>run_func <span class="ot">&lt;-</span> <span class="fu">digits_sum</span>(<span class="dv">935068</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>run_func</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31</code></pre>
+</div>
+</div>
 </section>
 </section>
 
